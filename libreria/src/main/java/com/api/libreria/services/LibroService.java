@@ -30,7 +30,7 @@ public class LibroService {
 
     public LibroModel actualizarLibro(LibroModel request, Long isbn) {
         LibroModel libro = libroRepository.findById(isbn)
-                .orElseThrow( () -> new IllegalArgumentException("No existe un libro un ISBN: " + isbn));
+                .orElseThrow( () -> new IllegalArgumentException("No existe un libro con ISBN: " + isbn));
         libro.setTitulo(request.getTitulo());
         libro.setAutor(request.getAutor());
         libro.setAñoPublicacion(request.getAñoPublicacion());
@@ -54,6 +54,6 @@ public class LibroService {
     }
 
     public ArrayList<LibroModel> buscarPorTitulo(String titulo) {
-        return libroRepository.findByAutor(titulo);
+        return libroRepository.findByTitulo(titulo);
     }
 }

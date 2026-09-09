@@ -34,7 +34,7 @@ public class LibroController {
     }
 
     @GetMapping(path = "/{isbn}")
-    public Optional<LibroModel> obtenerPorId(Long isbn) {
+    public Optional<LibroModel> obtenerPorId(@PathVariable("isbn") Long isbn) {
         return this.libroService.obtenerPorId(isbn);
     }
 
@@ -57,5 +57,10 @@ public class LibroController {
     @GetMapping(path = "/autor/{autor}")
     public ArrayList<LibroModel> buscarPorAutor(@PathVariable("autor") String autor) {
         return this.libroService.buscarPorAutor(autor);
+    }
+
+    @GetMapping(path = "/titulo/{titulo}")
+    public ArrayList<LibroModel> buscarPorTitulo(@PathVariable("titulo") String titulo) {
+        return this.libroService.buscarPorTitulo(titulo);
     }
 }
